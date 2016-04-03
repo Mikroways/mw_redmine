@@ -21,7 +21,6 @@ define_application_ruby 'redmine' do
     attribute :smtp_user_name, kind_of: String
     attribute :smtp_password, kind_of: String
     attribute :smtp_enable_starttls_auto, kind_of: [TrueClass, FalseClass], default: true
-    attribute :smtp_openssl_verify_mode, kind_of: String
     attribute :db_name, kind_of: String, required: true, default: lazy { |resource| resource.name }
     attribute :db_user, kind_of: String, required: true, default: lazy { |resource| resource.name }
     attribute :db_password, kind_of: String
@@ -57,7 +56,8 @@ define_application_ruby 'redmine' do
               'authentication' => smtp_authentication,
               'domain' => smtp_domain,
               'user_name' => smtp_user_name,
-              'password' => smtp_password
+              'password' => smtp_password,
+              'enable_starttls_auto' => smtp_enable_starttls_auto,
             }
           }
         }
