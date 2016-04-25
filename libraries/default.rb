@@ -50,7 +50,7 @@ define_application_ruby 'redmine' do
           'secret_token' => secret_token,
           'email_delivery' => {
             'delivery_method' => smtp_delivery_method,
-            'smtp_settings' => {
+            "#{smtp_delivery_method.to_s}_settings" => {
               'address' => smtp_address,
               'port' => smtp_port,
               'authentication' => smtp_authentication,
