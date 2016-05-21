@@ -105,6 +105,16 @@ define_application_ruby 'redmine' do
       to "#{shared_path}/config/database.yml"
     end
 
+    # Must be removed and symlinked to install required gems
+    directory "#{release_path}/plugins" do
+      action :delete
+      recursive true
+    end
+
+    link "#{release_path}/plugins" do
+      to "#{shared_path}/plugins"
+    end
+
     link "#{release_path}/Gemfile.local" do
       to "#{shared_path}/Gemfile.local"
     end
